@@ -1,0 +1,35 @@
+type Link {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  description: String!
+  title: String
+  url: String!
+  postedBy: User
+  votes: [Vote!]!
+  comments: [Comment!]!
+}
+
+type User {
+  id: ID! @id
+  name: String!
+  email: String! @unique
+  number: String
+  password: String!
+  links: [Link!]!
+  votes: [Vote!]!
+  comments: [Comment!]!
+}
+
+type Vote {
+  id: ID! @id
+  link: Link!
+  user: User!
+}
+
+type Comment {
+  id: ID! @id
+  link: Link!
+  user: User!
+  linkresponse: String!
+}
+
