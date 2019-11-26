@@ -113,7 +113,7 @@ class LinkList extends Component {
     return (
       <Query query={FEED_QUERY}>
         {({ loading, error, data, subscribeToMore }) => {
-          if (loading) return <div>Fetching</div>
+          if (loading){ console.log(this.props.match.params.page); return <div>Fetching</div> }
           if (error) return <div>Error</div>
 
           this._subscribeToNewLinks(subscribeToMore)
