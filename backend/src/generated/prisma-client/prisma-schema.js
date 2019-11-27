@@ -27,7 +27,7 @@ type Comment {
   id: ID!
   link: Link!
   user: User!
-  linkresponse: String!
+  linkResponse: String!
 }
 
 type CommentConnection {
@@ -40,7 +40,7 @@ input CommentCreateInput {
   id: ID
   link: LinkCreateOneWithoutCommentsInput!
   user: UserCreateOneWithoutCommentsInput!
-  linkresponse: String!
+  linkResponse: String!
 }
 
 input CommentCreateManyWithoutLinkInput {
@@ -56,13 +56,13 @@ input CommentCreateManyWithoutUserInput {
 input CommentCreateWithoutLinkInput {
   id: ID
   user: UserCreateOneWithoutCommentsInput!
-  linkresponse: String!
+  linkResponse: String!
 }
 
 input CommentCreateWithoutUserInput {
   id: ID
   link: LinkCreateOneWithoutCommentsInput!
-  linkresponse: String!
+  linkResponse: String!
 }
 
 type CommentEdge {
@@ -73,13 +73,13 @@ type CommentEdge {
 enum CommentOrderByInput {
   id_ASC
   id_DESC
-  linkresponse_ASC
-  linkresponse_DESC
+  linkResponse_ASC
+  linkResponse_DESC
 }
 
 type CommentPreviousValues {
   id: ID!
-  linkresponse: String!
+  linkResponse: String!
 }
 
 input CommentScalarWhereInput {
@@ -97,20 +97,20 @@ input CommentScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  linkresponse: String
-  linkresponse_not: String
-  linkresponse_in: [String!]
-  linkresponse_not_in: [String!]
-  linkresponse_lt: String
-  linkresponse_lte: String
-  linkresponse_gt: String
-  linkresponse_gte: String
-  linkresponse_contains: String
-  linkresponse_not_contains: String
-  linkresponse_starts_with: String
-  linkresponse_not_starts_with: String
-  linkresponse_ends_with: String
-  linkresponse_not_ends_with: String
+  linkResponse: String
+  linkResponse_not: String
+  linkResponse_in: [String!]
+  linkResponse_not_in: [String!]
+  linkResponse_lt: String
+  linkResponse_lte: String
+  linkResponse_gt: String
+  linkResponse_gte: String
+  linkResponse_contains: String
+  linkResponse_not_contains: String
+  linkResponse_starts_with: String
+  linkResponse_not_starts_with: String
+  linkResponse_ends_with: String
+  linkResponse_not_ends_with: String
   AND: [CommentScalarWhereInput!]
   OR: [CommentScalarWhereInput!]
   NOT: [CommentScalarWhereInput!]
@@ -137,15 +137,15 @@ input CommentSubscriptionWhereInput {
 input CommentUpdateInput {
   link: LinkUpdateOneRequiredWithoutCommentsInput
   user: UserUpdateOneRequiredWithoutCommentsInput
-  linkresponse: String
+  linkResponse: String
 }
 
 input CommentUpdateManyDataInput {
-  linkresponse: String
+  linkResponse: String
 }
 
 input CommentUpdateManyMutationInput {
-  linkresponse: String
+  linkResponse: String
 }
 
 input CommentUpdateManyWithoutLinkInput {
@@ -179,12 +179,12 @@ input CommentUpdateManyWithWhereNestedInput {
 
 input CommentUpdateWithoutLinkDataInput {
   user: UserUpdateOneRequiredWithoutCommentsInput
-  linkresponse: String
+  linkResponse: String
 }
 
 input CommentUpdateWithoutUserDataInput {
   link: LinkUpdateOneRequiredWithoutCommentsInput
-  linkresponse: String
+  linkResponse: String
 }
 
 input CommentUpdateWithWhereUniqueWithoutLinkInput {
@@ -226,20 +226,20 @@ input CommentWhereInput {
   id_not_ends_with: ID
   link: LinkWhereInput
   user: UserWhereInput
-  linkresponse: String
-  linkresponse_not: String
-  linkresponse_in: [String!]
-  linkresponse_not_in: [String!]
-  linkresponse_lt: String
-  linkresponse_lte: String
-  linkresponse_gt: String
-  linkresponse_gte: String
-  linkresponse_contains: String
-  linkresponse_not_contains: String
-  linkresponse_starts_with: String
-  linkresponse_not_starts_with: String
-  linkresponse_ends_with: String
-  linkresponse_not_ends_with: String
+  linkResponse: String
+  linkResponse_not: String
+  linkResponse_in: [String!]
+  linkResponse_not_in: [String!]
+  linkResponse_lt: String
+  linkResponse_lte: String
+  linkResponse_gt: String
+  linkResponse_gte: String
+  linkResponse_contains: String
+  linkResponse_not_contains: String
+  linkResponse_starts_with: String
+  linkResponse_not_starts_with: String
+  linkResponse_ends_with: String
+  linkResponse_not_ends_with: String
   AND: [CommentWhereInput!]
   OR: [CommentWhereInput!]
   NOT: [CommentWhereInput!]
@@ -256,7 +256,7 @@ type Link {
   createdAt: DateTime!
   description: String!
   title: String
-  url: String!
+  category: String
   postedBy: User
   votes(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vote!]
   comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
@@ -272,7 +272,7 @@ input LinkCreateInput {
   id: ID
   description: String!
   title: String
-  url: String!
+  category: String
   postedBy: UserCreateOneWithoutLinksInput
   votes: VoteCreateManyWithoutLinkInput
   comments: CommentCreateManyWithoutLinkInput
@@ -297,7 +297,7 @@ input LinkCreateWithoutCommentsInput {
   id: ID
   description: String!
   title: String
-  url: String!
+  category: String
   postedBy: UserCreateOneWithoutLinksInput
   votes: VoteCreateManyWithoutLinkInput
 }
@@ -306,7 +306,7 @@ input LinkCreateWithoutPostedByInput {
   id: ID
   description: String!
   title: String
-  url: String!
+  category: String
   votes: VoteCreateManyWithoutLinkInput
   comments: CommentCreateManyWithoutLinkInput
 }
@@ -315,7 +315,7 @@ input LinkCreateWithoutVotesInput {
   id: ID
   description: String!
   title: String
-  url: String!
+  category: String
   postedBy: UserCreateOneWithoutLinksInput
   comments: CommentCreateManyWithoutLinkInput
 }
@@ -334,8 +334,8 @@ enum LinkOrderByInput {
   description_DESC
   title_ASC
   title_DESC
-  url_ASC
-  url_DESC
+  category_ASC
+  category_DESC
 }
 
 type LinkPreviousValues {
@@ -343,7 +343,7 @@ type LinkPreviousValues {
   createdAt: DateTime!
   description: String!
   title: String
-  url: String!
+  category: String
 }
 
 input LinkScalarWhereInput {
@@ -397,20 +397,20 @@ input LinkScalarWhereInput {
   title_not_starts_with: String
   title_ends_with: String
   title_not_ends_with: String
-  url: String
-  url_not: String
-  url_in: [String!]
-  url_not_in: [String!]
-  url_lt: String
-  url_lte: String
-  url_gt: String
-  url_gte: String
-  url_contains: String
-  url_not_contains: String
-  url_starts_with: String
-  url_not_starts_with: String
-  url_ends_with: String
-  url_not_ends_with: String
+  category: String
+  category_not: String
+  category_in: [String!]
+  category_not_in: [String!]
+  category_lt: String
+  category_lte: String
+  category_gt: String
+  category_gte: String
+  category_contains: String
+  category_not_contains: String
+  category_starts_with: String
+  category_not_starts_with: String
+  category_ends_with: String
+  category_not_ends_with: String
   AND: [LinkScalarWhereInput!]
   OR: [LinkScalarWhereInput!]
   NOT: [LinkScalarWhereInput!]
@@ -437,7 +437,7 @@ input LinkSubscriptionWhereInput {
 input LinkUpdateInput {
   description: String
   title: String
-  url: String
+  category: String
   postedBy: UserUpdateOneWithoutLinksInput
   votes: VoteUpdateManyWithoutLinkInput
   comments: CommentUpdateManyWithoutLinkInput
@@ -446,13 +446,13 @@ input LinkUpdateInput {
 input LinkUpdateManyDataInput {
   description: String
   title: String
-  url: String
+  category: String
 }
 
 input LinkUpdateManyMutationInput {
   description: String
   title: String
-  url: String
+  category: String
 }
 
 input LinkUpdateManyWithoutPostedByInput {
@@ -489,7 +489,7 @@ input LinkUpdateOneRequiredWithoutVotesInput {
 input LinkUpdateWithoutCommentsDataInput {
   description: String
   title: String
-  url: String
+  category: String
   postedBy: UserUpdateOneWithoutLinksInput
   votes: VoteUpdateManyWithoutLinkInput
 }
@@ -497,7 +497,7 @@ input LinkUpdateWithoutCommentsDataInput {
 input LinkUpdateWithoutPostedByDataInput {
   description: String
   title: String
-  url: String
+  category: String
   votes: VoteUpdateManyWithoutLinkInput
   comments: CommentUpdateManyWithoutLinkInput
 }
@@ -505,7 +505,7 @@ input LinkUpdateWithoutPostedByDataInput {
 input LinkUpdateWithoutVotesDataInput {
   description: String
   title: String
-  url: String
+  category: String
   postedBy: UserUpdateOneWithoutLinksInput
   comments: CommentUpdateManyWithoutLinkInput
 }
@@ -582,20 +582,20 @@ input LinkWhereInput {
   title_not_starts_with: String
   title_ends_with: String
   title_not_ends_with: String
-  url: String
-  url_not: String
-  url_in: [String!]
-  url_not_in: [String!]
-  url_lt: String
-  url_lte: String
-  url_gt: String
-  url_gte: String
-  url_contains: String
-  url_not_contains: String
-  url_starts_with: String
-  url_not_starts_with: String
-  url_ends_with: String
-  url_not_ends_with: String
+  category: String
+  category_not: String
+  category_in: [String!]
+  category_not_in: [String!]
+  category_lt: String
+  category_lte: String
+  category_gt: String
+  category_gte: String
+  category_contains: String
+  category_not_contains: String
+  category_starts_with: String
+  category_not_starts_with: String
+  category_ends_with: String
+  category_not_ends_with: String
   postedBy: UserWhereInput
   votes_every: VoteWhereInput
   votes_some: VoteWhereInput

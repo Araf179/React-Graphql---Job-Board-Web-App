@@ -223,16 +223,16 @@ export type LinkOrderByInput =
   | "description_DESC"
   | "title_ASC"
   | "title_DESC"
-  | "url_ASC"
-  | "url_DESC";
+  | "category_ASC"
+  | "category_DESC";
 
 export type VoteOrderByInput = "id_ASC" | "id_DESC";
 
 export type CommentOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "linkresponse_ASC"
-  | "linkresponse_DESC";
+  | "linkResponse_ASC"
+  | "linkResponse_DESC";
 
 export type UserOrderByInput =
   | "id_ASC"
@@ -272,7 +272,7 @@ export type CommentWhereUniqueInput = AtLeastOne<{
 export interface LinkUpdateWithoutVotesDataInput {
   description?: Maybe<String>;
   title?: Maybe<String>;
-  url?: Maybe<String>;
+  category?: Maybe<String>;
   postedBy?: Maybe<UserUpdateOneWithoutLinksInput>;
   comments?: Maybe<CommentUpdateManyWithoutLinkInput>;
 }
@@ -328,20 +328,20 @@ export interface LinkWhereInput {
   title_not_starts_with?: Maybe<String>;
   title_ends_with?: Maybe<String>;
   title_not_ends_with?: Maybe<String>;
-  url?: Maybe<String>;
-  url_not?: Maybe<String>;
-  url_in?: Maybe<String[] | String>;
-  url_not_in?: Maybe<String[] | String>;
-  url_lt?: Maybe<String>;
-  url_lte?: Maybe<String>;
-  url_gt?: Maybe<String>;
-  url_gte?: Maybe<String>;
-  url_contains?: Maybe<String>;
-  url_not_contains?: Maybe<String>;
-  url_starts_with?: Maybe<String>;
-  url_not_starts_with?: Maybe<String>;
-  url_ends_with?: Maybe<String>;
-  url_not_ends_with?: Maybe<String>;
+  category?: Maybe<String>;
+  category_not?: Maybe<String>;
+  category_in?: Maybe<String[] | String>;
+  category_not_in?: Maybe<String[] | String>;
+  category_lt?: Maybe<String>;
+  category_lte?: Maybe<String>;
+  category_gt?: Maybe<String>;
+  category_gte?: Maybe<String>;
+  category_contains?: Maybe<String>;
+  category_not_contains?: Maybe<String>;
+  category_starts_with?: Maybe<String>;
+  category_not_starts_with?: Maybe<String>;
+  category_ends_with?: Maybe<String>;
+  category_not_ends_with?: Maybe<String>;
   postedBy?: Maybe<UserWhereInput>;
   votes_every?: Maybe<VoteWhereInput>;
   votes_some?: Maybe<VoteWhereInput>;
@@ -445,7 +445,7 @@ export interface UserSubscriptionWhereInput {
 export interface CommentCreateWithoutUserInput {
   id?: Maybe<ID_Input>;
   link: LinkCreateOneWithoutCommentsInput;
-  linkresponse: String;
+  linkResponse: String;
 }
 
 export interface CommentSubscriptionWhereInput {
@@ -462,7 +462,7 @@ export interface CommentSubscriptionWhereInput {
 export interface CommentUpdateInput {
   link?: Maybe<LinkUpdateOneRequiredWithoutCommentsInput>;
   user?: Maybe<UserUpdateOneRequiredWithoutCommentsInput>;
-  linkresponse?: Maybe<String>;
+  linkResponse?: Maybe<String>;
 }
 
 export interface VoteCreateInput {
@@ -491,7 +491,7 @@ export interface UserUpdateInput {
 export interface LinkUpdateWithoutCommentsDataInput {
   description?: Maybe<String>;
   title?: Maybe<String>;
-  url?: Maybe<String>;
+  category?: Maybe<String>;
   postedBy?: Maybe<UserUpdateOneWithoutLinksInput>;
   votes?: Maybe<VoteUpdateManyWithoutLinkInput>;
 }
@@ -519,7 +519,7 @@ export interface UserUpdateOneWithoutLinksInput {
 export interface LinkUpdateInput {
   description?: Maybe<String>;
   title?: Maybe<String>;
-  url?: Maybe<String>;
+  category?: Maybe<String>;
   postedBy?: Maybe<UserUpdateOneWithoutLinksInput>;
   votes?: Maybe<VoteUpdateManyWithoutLinkInput>;
   comments?: Maybe<CommentUpdateManyWithoutLinkInput>;
@@ -538,7 +538,7 @@ export interface LinkCreateInput {
   id?: Maybe<ID_Input>;
   description: String;
   title?: Maybe<String>;
-  url: String;
+  category?: Maybe<String>;
   postedBy?: Maybe<UserCreateOneWithoutLinksInput>;
   votes?: Maybe<VoteCreateManyWithoutLinkInput>;
   comments?: Maybe<CommentCreateManyWithoutLinkInput>;
@@ -691,20 +691,20 @@ export interface CommentWhereInput {
   id_not_ends_with?: Maybe<ID_Input>;
   link?: Maybe<LinkWhereInput>;
   user?: Maybe<UserWhereInput>;
-  linkresponse?: Maybe<String>;
-  linkresponse_not?: Maybe<String>;
-  linkresponse_in?: Maybe<String[] | String>;
-  linkresponse_not_in?: Maybe<String[] | String>;
-  linkresponse_lt?: Maybe<String>;
-  linkresponse_lte?: Maybe<String>;
-  linkresponse_gt?: Maybe<String>;
-  linkresponse_gte?: Maybe<String>;
-  linkresponse_contains?: Maybe<String>;
-  linkresponse_not_contains?: Maybe<String>;
-  linkresponse_starts_with?: Maybe<String>;
-  linkresponse_not_starts_with?: Maybe<String>;
-  linkresponse_ends_with?: Maybe<String>;
-  linkresponse_not_ends_with?: Maybe<String>;
+  linkResponse?: Maybe<String>;
+  linkResponse_not?: Maybe<String>;
+  linkResponse_in?: Maybe<String[] | String>;
+  linkResponse_not_in?: Maybe<String[] | String>;
+  linkResponse_lt?: Maybe<String>;
+  linkResponse_lte?: Maybe<String>;
+  linkResponse_gt?: Maybe<String>;
+  linkResponse_gte?: Maybe<String>;
+  linkResponse_contains?: Maybe<String>;
+  linkResponse_not_contains?: Maybe<String>;
+  linkResponse_starts_with?: Maybe<String>;
+  linkResponse_not_starts_with?: Maybe<String>;
+  linkResponse_ends_with?: Maybe<String>;
+  linkResponse_not_ends_with?: Maybe<String>;
   AND?: Maybe<CommentWhereInput[] | CommentWhereInput>;
   OR?: Maybe<CommentWhereInput[] | CommentWhereInput>;
   NOT?: Maybe<CommentWhereInput[] | CommentWhereInput>;
@@ -718,7 +718,7 @@ export interface VoteCreateManyWithoutUserInput {
 export interface LinkUpdateManyDataInput {
   description?: Maybe<String>;
   title?: Maybe<String>;
-  url?: Maybe<String>;
+  category?: Maybe<String>;
 }
 
 export interface LinkCreateOneWithoutVotesInput {
@@ -728,7 +728,7 @@ export interface LinkCreateOneWithoutVotesInput {
 
 export interface CommentUpdateWithoutLinkDataInput {
   user?: Maybe<UserUpdateOneRequiredWithoutCommentsInput>;
-  linkresponse?: Maybe<String>;
+  linkResponse?: Maybe<String>;
 }
 
 export interface CommentCreateManyWithoutLinkInput {
@@ -812,7 +812,7 @@ export interface VoteSubscriptionWhereInput {
 export interface LinkUpdateWithoutPostedByDataInput {
   description?: Maybe<String>;
   title?: Maybe<String>;
-  url?: Maybe<String>;
+  category?: Maybe<String>;
   votes?: Maybe<VoteUpdateManyWithoutLinkInput>;
   comments?: Maybe<CommentUpdateManyWithoutLinkInput>;
 }
@@ -888,7 +888,7 @@ export interface LinkCreateWithoutCommentsInput {
   id?: Maybe<ID_Input>;
   description: String;
   title?: Maybe<String>;
-  url: String;
+  category?: Maybe<String>;
   postedBy?: Maybe<UserCreateOneWithoutLinksInput>;
   votes?: Maybe<VoteCreateManyWithoutLinkInput>;
 }
@@ -929,19 +929,19 @@ export interface CommentUpdateWithWhereUniqueWithoutUserInput {
 export interface CommentCreateWithoutLinkInput {
   id?: Maybe<ID_Input>;
   user: UserCreateOneWithoutCommentsInput;
-  linkresponse: String;
+  linkResponse: String;
 }
 
 export interface CommentUpdateWithoutUserDataInput {
   link?: Maybe<LinkUpdateOneRequiredWithoutCommentsInput>;
-  linkresponse?: Maybe<String>;
+  linkResponse?: Maybe<String>;
 }
 
 export interface LinkCreateWithoutPostedByInput {
   id?: Maybe<ID_Input>;
   description: String;
   title?: Maybe<String>;
-  url: String;
+  category?: Maybe<String>;
   votes?: Maybe<VoteCreateManyWithoutLinkInput>;
   comments?: Maybe<CommentCreateManyWithoutLinkInput>;
 }
@@ -978,20 +978,20 @@ export interface CommentScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  linkresponse?: Maybe<String>;
-  linkresponse_not?: Maybe<String>;
-  linkresponse_in?: Maybe<String[] | String>;
-  linkresponse_not_in?: Maybe<String[] | String>;
-  linkresponse_lt?: Maybe<String>;
-  linkresponse_lte?: Maybe<String>;
-  linkresponse_gt?: Maybe<String>;
-  linkresponse_gte?: Maybe<String>;
-  linkresponse_contains?: Maybe<String>;
-  linkresponse_not_contains?: Maybe<String>;
-  linkresponse_starts_with?: Maybe<String>;
-  linkresponse_not_starts_with?: Maybe<String>;
-  linkresponse_ends_with?: Maybe<String>;
-  linkresponse_not_ends_with?: Maybe<String>;
+  linkResponse?: Maybe<String>;
+  linkResponse_not?: Maybe<String>;
+  linkResponse_in?: Maybe<String[] | String>;
+  linkResponse_not_in?: Maybe<String[] | String>;
+  linkResponse_lt?: Maybe<String>;
+  linkResponse_lte?: Maybe<String>;
+  linkResponse_gt?: Maybe<String>;
+  linkResponse_gte?: Maybe<String>;
+  linkResponse_contains?: Maybe<String>;
+  linkResponse_not_contains?: Maybe<String>;
+  linkResponse_starts_with?: Maybe<String>;
+  linkResponse_not_starts_with?: Maybe<String>;
+  linkResponse_ends_with?: Maybe<String>;
+  linkResponse_not_ends_with?: Maybe<String>;
   AND?: Maybe<CommentScalarWhereInput[] | CommentScalarWhereInput>;
   OR?: Maybe<CommentScalarWhereInput[] | CommentScalarWhereInput>;
   NOT?: Maybe<CommentScalarWhereInput[] | CommentScalarWhereInput>;
@@ -1000,7 +1000,7 @@ export interface CommentScalarWhereInput {
 export interface LinkUpdateManyMutationInput {
   description?: Maybe<String>;
   title?: Maybe<String>;
-  url?: Maybe<String>;
+  category?: Maybe<String>;
 }
 
 export interface CommentUpdateManyWithWhereNestedInput {
@@ -1015,7 +1015,7 @@ export interface VoteUpsertWithWhereUniqueWithoutUserInput {
 }
 
 export interface CommentUpdateManyDataInput {
-  linkresponse?: Maybe<String>;
+  linkResponse?: Maybe<String>;
 }
 
 export interface UserCreateWithoutLinksInput {
@@ -1094,20 +1094,20 @@ export interface LinkScalarWhereInput {
   title_not_starts_with?: Maybe<String>;
   title_ends_with?: Maybe<String>;
   title_not_ends_with?: Maybe<String>;
-  url?: Maybe<String>;
-  url_not?: Maybe<String>;
-  url_in?: Maybe<String[] | String>;
-  url_not_in?: Maybe<String[] | String>;
-  url_lt?: Maybe<String>;
-  url_lte?: Maybe<String>;
-  url_gt?: Maybe<String>;
-  url_gte?: Maybe<String>;
-  url_contains?: Maybe<String>;
-  url_not_contains?: Maybe<String>;
-  url_starts_with?: Maybe<String>;
-  url_not_starts_with?: Maybe<String>;
-  url_ends_with?: Maybe<String>;
-  url_not_ends_with?: Maybe<String>;
+  category?: Maybe<String>;
+  category_not?: Maybe<String>;
+  category_in?: Maybe<String[] | String>;
+  category_not_in?: Maybe<String[] | String>;
+  category_lt?: Maybe<String>;
+  category_lte?: Maybe<String>;
+  category_gt?: Maybe<String>;
+  category_gte?: Maybe<String>;
+  category_contains?: Maybe<String>;
+  category_not_contains?: Maybe<String>;
+  category_starts_with?: Maybe<String>;
+  category_not_starts_with?: Maybe<String>;
+  category_ends_with?: Maybe<String>;
+  category_not_ends_with?: Maybe<String>;
   AND?: Maybe<LinkScalarWhereInput[] | LinkScalarWhereInput>;
   OR?: Maybe<LinkScalarWhereInput[] | LinkScalarWhereInput>;
   NOT?: Maybe<LinkScalarWhereInput[] | LinkScalarWhereInput>;
@@ -1154,7 +1154,7 @@ export interface LinkCreateWithoutVotesInput {
   id?: Maybe<ID_Input>;
   description: String;
   title?: Maybe<String>;
-  url: String;
+  category?: Maybe<String>;
   postedBy?: Maybe<UserCreateOneWithoutLinksInput>;
   comments?: Maybe<CommentCreateManyWithoutLinkInput>;
 }
@@ -1163,11 +1163,11 @@ export interface CommentCreateInput {
   id?: Maybe<ID_Input>;
   link: LinkCreateOneWithoutCommentsInput;
   user: UserCreateOneWithoutCommentsInput;
-  linkresponse: String;
+  linkResponse: String;
 }
 
 export interface CommentUpdateManyMutationInput {
-  linkresponse?: Maybe<String>;
+  linkResponse?: Maybe<String>;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -1542,14 +1542,14 @@ export interface VoteSubscriptionPayloadSubscription
 
 export interface Comment {
   id: ID_Output;
-  linkresponse: String;
+  linkResponse: String;
 }
 
 export interface CommentPromise extends Promise<Comment>, Fragmentable {
   id: () => Promise<ID_Output>;
   link: <T = LinkPromise>() => T;
   user: <T = UserPromise>() => T;
-  linkresponse: () => Promise<String>;
+  linkResponse: () => Promise<String>;
 }
 
 export interface CommentSubscription
@@ -1558,7 +1558,7 @@ export interface CommentSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   link: <T = LinkSubscription>() => T;
   user: <T = UserSubscription>() => T;
-  linkresponse: () => Promise<AsyncIterator<String>>;
+  linkResponse: () => Promise<AsyncIterator<String>>;
 }
 
 export interface CommentNullablePromise
@@ -1567,7 +1567,7 @@ export interface CommentNullablePromise
   id: () => Promise<ID_Output>;
   link: <T = LinkPromise>() => T;
   user: <T = UserPromise>() => T;
-  linkresponse: () => Promise<String>;
+  linkResponse: () => Promise<String>;
 }
 
 export interface AggregateLink {
@@ -1654,7 +1654,7 @@ export interface LinkPreviousValues {
   createdAt: DateTimeOutput;
   description: String;
   title?: String;
-  url: String;
+  category?: String;
 }
 
 export interface LinkPreviousValuesPromise
@@ -1664,7 +1664,7 @@ export interface LinkPreviousValuesPromise
   createdAt: () => Promise<DateTimeOutput>;
   description: () => Promise<String>;
   title: () => Promise<String>;
-  url: () => Promise<String>;
+  category: () => Promise<String>;
 }
 
 export interface LinkPreviousValuesSubscription
@@ -1674,7 +1674,7 @@ export interface LinkPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   description: () => Promise<AsyncIterator<String>>;
   title: () => Promise<AsyncIterator<String>>;
-  url: () => Promise<AsyncIterator<String>>;
+  category: () => Promise<AsyncIterator<String>>;
 }
 
 export interface LinkSubscriptionPayload {
@@ -1729,21 +1729,21 @@ export interface UserSubscriptionPayloadSubscription
 
 export interface CommentPreviousValues {
   id: ID_Output;
-  linkresponse: String;
+  linkResponse: String;
 }
 
 export interface CommentPreviousValuesPromise
   extends Promise<CommentPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  linkresponse: () => Promise<String>;
+  linkResponse: () => Promise<String>;
 }
 
 export interface CommentPreviousValuesSubscription
   extends Promise<AsyncIterator<CommentPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  linkresponse: () => Promise<AsyncIterator<String>>;
+  linkResponse: () => Promise<AsyncIterator<String>>;
 }
 
 export interface BatchPayload {
@@ -1805,7 +1805,7 @@ export interface Link {
   createdAt: DateTimeOutput;
   description: String;
   title?: String;
-  url: String;
+  category?: String;
 }
 
 export interface LinkPromise extends Promise<Link>, Fragmentable {
@@ -1813,7 +1813,7 @@ export interface LinkPromise extends Promise<Link>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   description: () => Promise<String>;
   title: () => Promise<String>;
-  url: () => Promise<String>;
+  category: () => Promise<String>;
   postedBy: <T = UserPromise>() => T;
   votes: <T = FragmentableArray<Vote>>(args?: {
     where?: VoteWhereInput;
@@ -1842,7 +1842,7 @@ export interface LinkSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   description: () => Promise<AsyncIterator<String>>;
   title: () => Promise<AsyncIterator<String>>;
-  url: () => Promise<AsyncIterator<String>>;
+  category: () => Promise<AsyncIterator<String>>;
   postedBy: <T = UserSubscription>() => T;
   votes: <T = Promise<AsyncIterator<VoteSubscription>>>(args?: {
     where?: VoteWhereInput;
@@ -1871,7 +1871,7 @@ export interface LinkNullablePromise
   createdAt: () => Promise<DateTimeOutput>;
   description: () => Promise<String>;
   title: () => Promise<String>;
-  url: () => Promise<String>;
+  category: () => Promise<String>;
   postedBy: <T = UserPromise>() => T;
   votes: <T = FragmentableArray<Vote>>(args?: {
     where?: VoteWhereInput;

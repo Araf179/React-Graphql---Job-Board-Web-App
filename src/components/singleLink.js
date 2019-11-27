@@ -4,6 +4,28 @@ import { timeDifferenceForDate } from '../utils'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
+export const FEED_QUERY = gql`
+query{
+  feed {
+    links {
+      id
+      createdAt
+      url
+      description
+      postedBy {
+        id
+        name
+      }
+      votes {
+        id
+        user {
+          id
+        }
+      }
+    }
+  }
+}
+`
 
 class singleLink extends Component {
   render() {
@@ -14,6 +36,7 @@ class singleLink extends Component {
         <div className="row">
             <h1 class="mt-4">Logo Nav by Start Bootstrap</h1>
             <p>The logo in the navbar is now a default Bootstrap feature in Bootstrap 4! Make sure to set the width and height of the logo within the HTML or with CSS. For best results, use an SVG image as your logo.</p>
+            <p>Contact number: </p>
             <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
         </div>
         <div className="row">
@@ -22,6 +45,7 @@ class singleLink extends Component {
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 <label for="exampleFormControlFile1">Upload Resume as a pdf attachment</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1"></input>
+                <button type="submit" class="btn btn-primary">Submit</button>
 			</form>
         </div>
         <div className="row">

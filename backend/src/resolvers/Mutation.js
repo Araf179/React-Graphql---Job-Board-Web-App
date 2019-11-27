@@ -5,7 +5,8 @@ const { APP_SECRET, getUserId } = require('../utils')
 function post(parent, args, context, info) {
   const userId = getUserId(context)
   return context.prisma.createLink({
-    url: args.url,
+    title: args.title,
+    category: args.category,
     description: args.description,
     postedBy: { connect: { id: userId } },
   })
@@ -71,7 +72,7 @@ async function postComment(parent, args, context, info) {
   return context.prisma.createComment({
     user: { connect: { id: userId } },
     link: { connect: { id: args.linkId } },
-    linkresponse: args.linkresponse
+    linkResponse: args.linkResponse
   })
 }
 

@@ -3,7 +3,7 @@ type Link {
   createdAt: DateTime! @createdAt
   description: String!
   title: String
-  url: String!
+  category: String
   postedBy: User
   votes: [Vote!]!
   comments: [Comment!]!
@@ -30,6 +30,6 @@ type Comment {
   id: ID! @id
   link: Link!
   user: User!
-  linkresponse: String!
+  linkResponse: String!
 }
 
