@@ -1,6 +1,7 @@
 type Query {
   info: String!
-  feed(id: String, category: String, filter: String, skip: Int, first: Int, orderBy: LinkOrderByInput): Feed!
+  feed(id: String, category: String, filter: String, skip: Int, first: Int, orderBy: LinkOrderByInput): Feed
+  singleLink(id: String, category: String): Link
 }
 
 enum LinkOrderByInput {
@@ -40,6 +41,9 @@ type User {
   name: String!
   email: String!
   links: [Link!]!
+  number: String
+  votes: [Vote!]!
+  comments: [Comment!]!
 }
 
 type Link {

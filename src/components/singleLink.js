@@ -1,51 +1,51 @@
 import React, { Component } from 'react'
 import { AUTH_TOKEN } from '../constants'
+import { Query } from 'react-apollo'
 import { timeDifferenceForDate } from '../utils'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
 export const FEED_QUERY = gql`
-query{
-  feed {
+query singleLink($id: String) {
+    singleLink(id: $id) {
     links {
       id
       createdAt
-      url
+      title
       description
-      postedBy {
-        id
-        name
-      }
-      votes {
-        id
-        user {
-          id
-        }
       }
     }
   }
-}
 `
 
 class singleLink extends Component {
   render() {
     const authToken = localStorage.getItem(AUTH_TOKEN)
-    console.log(this.props.match.params.id)
     return (
     <div className="container">
-        <div className="row">
-            <h1 class="mt-4">Logo Nav by Start Bootstrap</h1>
-            <p>The logo in the navbar is now a default Bootstrap feature in Bootstrap 4! Make sure to set the width and height of the logo within the HTML or with CSS. For best results, use an SVG image as your logo.</p>
-            <p>Contact number: </p>
-            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-        </div>
+        <Query query={FEED_QUERY} variables={{id: this.props.match.params.id}}>
+            {({ loading, error, data }) => {
+            if (loading) return <div>Loading</div>;
+            if (error) {console.log(error); return <div>error</div>};
+            if(data) {console.log(data)}
+            return (
+            <div className="row">
+                        <h1 className="mt-4">Logo Nav by Start Bootstrap</h1>
+                        <p>The logo in the navbar is now a default Bootstrap feature in Bootstrap 4! Make sure to set the width and height of the logo within the HTML or with CSS. For best results, use an SVG image as your logo.</p>
+                        <p>Contact number: </p>
+                        <a className="float-right btn text-white btn-danger"> <i className="fa fa-heart"></i> Like</a>
+                    </div>
+            )
+            }}
+        </Query>
+        
         <div className="row">
             <form className="col">
-                <label for="exampleFormControlTextarea1">Post a response</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                <label for="exampleFormControlFile1">Upload Resume as a pdf attachment</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1"></input>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <label htmlFor="exampleFormControlTextarea1">Post a response</label>
+                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label htmlFor="exampleFormControlFile1">Upload Resume as a pdf attachment</label>
+                <input type="file" className="form-control-file" id="exampleFormControlFile1"></input>
+                <button type="submit" className="btn btn-primary">Submit</button>
 			</form>
         </div>
         <div className="row">

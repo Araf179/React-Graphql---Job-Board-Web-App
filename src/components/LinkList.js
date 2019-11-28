@@ -9,7 +9,7 @@ query{
     links {
       id
       createdAt
-      url
+      title
       description
       postedBy {
         id
@@ -114,7 +114,7 @@ class LinkList extends Component {
       <Query query={FEED_QUERY}>
         {({ loading, error, data, subscribeToMore }) => {
           if (loading){ console.log(this.props.match.params.page); return <div>Fetching</div> }
-          if (error) return <div>Error</div>
+          if (error){console.log(error); return <div>Error</div> }
 
           this._subscribeToNewLinks(subscribeToMore)
           this._subscribeToNewVotes(subscribeToMore)
