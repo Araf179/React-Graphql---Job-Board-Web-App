@@ -1,13 +1,10 @@
   
 function link(parent, args, context) {
-    return context.prisma.vote({ id: parent.id }).link()
+    console.log("hits")
+    return context.prisma.comment({ id: parent.id }).link()
   }
   
-  function user(parent, args, context) {
-    return context.prisma.vote({ id: parent.id }).user()
-  }
   
   module.exports = {
-    link,
-    user,
+    link
   }

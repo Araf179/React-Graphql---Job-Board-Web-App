@@ -7,7 +7,7 @@ function postedBy(parent, args, context) {
   }
 
   function comments(parent, args, context) {
-    return context.prisma.link({ id: parent.id }).votes()
+    return context.prisma.link({ id: parent.id }).comments()
   }
   
   module.exports = {
